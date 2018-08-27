@@ -5,28 +5,25 @@ using namespace std;
 int main()
 {
     int T;
+	char s[130];
 
-    scanf("%d", &T);
-    getchar();
+    scanf("%d ", &T);
 
     while(T--) {
-        char s[130];
         gets(s);
         stack <char> c;
 
         for(int i = 0; s[i]; i++) {
             if(!c.empty() && (s[i] == ')' && c.top() == '(' || s[i] == ']' && c.top() == '[')) {
                 c.pop();
-            }
-            else {
+            } else {
                 c.push(s[i]);
             }
         }
 
         if(c.empty()) {
             printf("Yes\n");
-        }
-        else {
+        } else {
             printf("No\n");
         }
     }
