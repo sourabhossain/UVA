@@ -8,10 +8,6 @@ int prime[SIZE/64 + 2];
 #define CHECK(n) (prime[n / 64] & (1 << ((n % 64) / 2)))
 #define SET(n) (prime[n / 64] |= (1 << ((n % 64) / 2)))
 
-bool isPrime(int n) {
-	return n > 1 && (n == 2 || ((n & 1) && !CHECK(n)));
-} // end isPrime function
-
 void sieve() {
 	int root = sqrt(SIZE);
 
@@ -22,11 +18,15 @@ void sieve() {
             }
         }
 	}
-} // end sieve function
+} 
+
+bool isPrime(int n) {
+	return n > 1 && (n == 2 || ((n & 1) && !CHECK(n)));
+}
 
 int main()
 {
-	sieve(); // go to sieve function
+	sieve(); 
 	int n;
 
 	while(scanf("%d", &n) != EOF) {
